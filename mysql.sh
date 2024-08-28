@@ -1,4 +1,4 @@
-LOG_FOLDER="/var/log/shell-script"
+LOG_FOLDER="/var/log/expense"
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE="$LOG_FOLDER/$SCRIPT_NAME-$TIMESTAMP.log"
@@ -36,15 +36,15 @@ echo "Script started executing at: $(date)" | tee -a $LOG_FILE
    
 CHECK_ROOT
 
-dnf install mysql-server -y
+dnf install mysql-server -y &>>$LOG_FILE
 VALIDATE $? "Installing MySQL"
 
 
-systemctl enable mysqld
+systemctl enable mysqld &>>$LOG_FILE
 VALIDATE $? "Enabled MySQL"
 
-systemctl start mysqld
+systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Started MySQL"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOG_FILE
 VALIDATE $? "Setting Up Root Password"
