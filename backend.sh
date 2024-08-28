@@ -74,8 +74,8 @@ VALIDATE $? "Database Loading..."
 systemctl daemon-reload &>> $LOG_FILE
 VALIDATE $? "Daemon reloading.."
 
-systemctl enable backend &>> $LOG_FILE
-VALIDATE $? "Backend Enabled"
+# systemctl enable backend &>> $LOG_FILE
+# VALIDATE $? "Backend Enabled"
 
 systemctl restart backend &>> $LOG_FILE
 VALIDATE $? "Restarted the Backend"
