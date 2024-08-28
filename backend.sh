@@ -58,5 +58,5 @@ zip &>> $LOG_FILE
 VALIDATE $? "Downloading Backend Application code"
 
 cd /app
-unzip /tmp/backend.zip
-VALIDATE $? "Extarcting Backend Application code"
+unzip /tmp/backend.zip &>> $LOG_FILE
+VALIDATE $? "Extracting Backend Application code"
