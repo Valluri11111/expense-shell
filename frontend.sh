@@ -51,6 +51,6 @@ cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>> LOG_FILE
 VALIDATE $? "Extract Frontend code"
 
-systemctl restart nginx
+systemctl restart nginx &>> LOG_FILE
 VALIDATE $? "Restarting Ngnix"
 
